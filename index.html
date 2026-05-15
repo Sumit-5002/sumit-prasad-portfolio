@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sumit Prasad | VS Code Portfolio</title>
+    <meta name="description" content="Sumit Prasad's Developer Portfolio - B.Tech CSE student at VIT Bhopal targeting Google SWE. Exploring cloud native systems and full-stack development." />
+    <link rel="icon" type="image/svg+xml" href="/vscode.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&display=swap" rel="stylesheet" />
+    <script>
+      (function() {
+        try {
+          var theme = localStorage.getItem('theme');
+          if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <style>
+      body {
+        margin: 0;
+        background-color: #ffffff;
+        color: #333333;
+        font-family: system-ui, -apple-system, sans-serif;
+      }
+      html.dark body {
+        background-color: #1e1e1e;
+        color: #d4d4d4;
+      }
+      .loader-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100vw;
+      }
+      .loader-spinner {
+        width: 32px;
+        height: 32px;
+        border: 3px solid rgba(128, 128, 128, 0.2);
+        border-top-color: #007acc;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-bottom: 16px;
+      }
+      .loader-text {
+        font-size: 12px;
+        letter-spacing: 1px;
+        opacity: 0.6;
+        text-transform: uppercase;
+      }
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div class="loader-container">
+        <div class="loader-spinner"></div>
+        <div class="loader-text">Initializing Workspace...</div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

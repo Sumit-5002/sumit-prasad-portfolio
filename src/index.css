@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* VS Code Colors */
+  --color-vscode-bg: #1e1e1e;
+  --color-vscode-sidebar: #252526;
+  --color-vscode-tab-active: #1e1e1e;
+  --color-vscode-tab-inactive: #2d2d2d;
+  --color-vscode-statusbar: #00599d;
+  --color-vscode-activity-bar: #333333;
+  --color-vscode-border: #3c3c3c;
+  --color-vscode-text: #d4d4d4;
+  --color-vscode-selection: #264f78;
+}
+
+@layer base {
+  :root {
+    --vscode-bg: #ffffff;
+    --vscode-sidebar: #f3f3f3;
+    --vscode-tab-active: #ffffff;
+    --vscode-tab-inactive: #ececec;
+    --vscode-statusbar: #00599d;
+    --vscode-activity-bar: #2c2c2c;
+    --vscode-border: #e1e1e1;
+    --vscode-text: #333333;
+  }
+
+  .dark {
+    --vscode-bg: #1e1e1e;
+    --vscode-sidebar: #252526;
+    --vscode-tab-active: #1e1e1e;
+    --vscode-tab-inactive: #2d2d2d;
+    --vscode-statusbar: #00599d;
+    --vscode-activity-bar: #333333;
+    --vscode-border: #3c3c3c;
+    --vscode-text: #d4d4d4;
+  }
+
+  body {
+    @apply font-sans bg-[var(--vscode-bg)] text-[var(--vscode-text)] select-none overflow-hidden h-[100dvh] w-screen transition-all duration-300;
+    font-size: var(--font-size-base, 14px);
+  }
+
+  /* Custom Scrollbar Styles */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(100, 100, 100, 0.2);
+    border: 3px solid transparent;
+    background-clip: padding-box;
+    border-radius: 9999px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(100, 100, 100, 0.4);
+    border: 3px solid transparent;
+    background-clip: padding-box;
+  }
+  
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(100, 100, 100, 0.2) transparent;
+  }
+
+  /* Utility Background Patterns */
+  .bg-grid-pattern {
+    background-image: linear-gradient(var(--vscode-border) 1px, transparent 1px), linear-gradient(90deg, var(--vscode-border) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  .bg-dot-pattern {
+    background-image: radial-gradient(circle at 10px 10px, white 1px, transparent 0);
+    background-size: 40px 40px;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
