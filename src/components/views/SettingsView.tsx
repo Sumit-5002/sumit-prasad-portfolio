@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { motion } from 'motion/react';
 import { Settings, Type, Layout, RefreshCcw, Save, Check } from 'lucide-react';
-import { cn } from '../lib/utils';
+import { cn } from '../../lib/utils';
 
 interface SettingsViewProps {
   config: {

@@ -5,7 +5,7 @@ import {
   Clock, Code, Star, GitBranch,
   Cpu, Monitor, Server, Globe, Trophy, Zap
 } from 'lucide-react';
-import { cn } from '../lib/utils';
+import { cn } from '../../lib/utils';
 
 interface GitHubData {
   public_repos: number;

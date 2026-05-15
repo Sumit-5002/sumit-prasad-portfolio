@@ -19,8 +19,18 @@ A high-fidelity developer portfolio that emulates the Visual Studio Code environ
 - **Animations:** Motion
 - **Icons:** Lucide React
 - **Syntax Highlighting:** React Syntax Highlighter
+- **Theme Management:** next-themes
 
-## 💻 Run Locally
+## 📂 Project Structure
+
+The project follows a modular directory structure for scalability:
+
+- `src/components/layout/`: Core UI components (Sidebar, TitleBar, etc.)
+- `src/components/views/`: Individual page views and content tabs.
+- `src/components/ui/`: Shared interactive UI elements and animations.
+- `src/components/providers/`: Context providers and state management.
+- `src/lib/`: Utility functions and shared helpers.
+- `src/types/`: TypeScript definitions and interfaces.
 
 **Prerequisites:** Node.js
 

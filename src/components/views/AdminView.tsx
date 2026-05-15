@@ -5,7 +5,7 @@ import {
   RefreshCcw, AlertTriangle, Eye, EyeOff,
   User, Database, Globe, Briefcase
 } from 'lucide-react';
-import { cn } from '../lib/utils';
+import { cn } from '../../lib/utils';
 
 export function AdminView() {
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);

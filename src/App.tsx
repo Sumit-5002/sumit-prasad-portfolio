@@ -4,35 +4,35 @@
  */
 
 import * as React from 'react';
-import { TitleBar } from './components/TitleBar';
-import { ActivityBar } from './components/ActivityBar';
-import { StatusBar } from './components/StatusBar';
-import { Explorer } from './components/Explorer';
-import { Terminal } from './components/Terminal';
-import { ThemeProvider } from './components/ThemeProvider';
-import { CodeView } from './components/CodeView';
-import { CommandPalette } from './components/CommandPalette';
+import { TitleBar } from './components/layout/TitleBar';
+import { ActivityBar } from './components/layout/ActivityBar';
+import { StatusBar } from './components/layout/StatusBar';
+import { Explorer } from './components/layout/Explorer';
+import { Terminal } from './components/layout/Terminal';
+import { ThemeProvider } from './components/providers/ThemeProvider';
+import { CodeView } from './components/ui/CodeView';
+import { CommandPalette } from './components/ui/CommandPalette';
 import { FileCode, X, Layout, Code, Eye, Lock, Search, Blocks, ChartBar, Bell, Info, CheckCircle2, Music } from 'lucide-react';
 import { cn } from './lib/utils';
 import { Tab } from './types';
 import { FILE_CONTENT } from './constants';
 import { motion, AnimatePresence } from 'motion/react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { AboutView } from './components/AboutView';
-import { ClickEffect } from './components/ClickEffect';
+import { AboutView } from './components/views/AboutView';
+import { ClickEffect } from './components/ui/ClickEffect';
 
 // --- LAZY VIEWS ---
-const ProjectsView = React.lazy(() => import('./components/ProjectsView').then(m => ({ default: m.ProjectsView })));
-const ContactView = React.lazy(() => import('./components/ContactView').then(m => ({ default: m.ContactView })));
-const SkillsView = React.lazy(() => import('./components/SkillsView').then(m => ({ default: m.SkillsView })));
-const ExperienceView = React.lazy(() => import('./components/ExperienceView').then(m => ({ default: m.ExperienceView })));
-const StatsView = React.lazy(() => import('./components/StatsView').then(m => ({ default: m.StatsView })));
-const ResumeView = React.lazy(() => import('./components/ResumeView').then(m => ({ default: m.ResumeView })));
-const MusicView = React.lazy(() => import('./components/MusicView').then(m => ({ default: m.MusicView })));
-const VisitorDashboard = React.lazy(() => import('./components/VisitorDashboard').then(m => ({ default: m.VisitorDashboard })));
-const AdminView = React.lazy(() => import('./components/AdminView').then(m => ({ default: m.AdminView })));
-const SettingsView = React.lazy(() => import('./components/SettingsView').then(m => ({ default: m.SettingsView })));
-const ComingSoonView = React.lazy(() => import('./components/ComingSoonView').then(m => ({ default: m.ComingSoonView })));
+const ProjectsView = React.lazy(() => import('./components/views/ProjectsView').then(m => ({ default: m.ProjectsView })));
+const ContactView = React.lazy(() => import('./components/views/ContactView').then(m => ({ default: m.ContactView })));
+const SkillsView = React.lazy(() => import('./components/views/SkillsView').then(m => ({ default: m.SkillsView })));
+const ExperienceView = React.lazy(() => import('./components/views/ExperienceView').then(m => ({ default: m.ExperienceView })));
+const StatsView = React.lazy(() => import('./components/views/StatsView').then(m => ({ default: m.StatsView })));
+const ResumeView = React.lazy(() => import('./components/views/ResumeView').then(m => ({ default: m.ResumeView })));
+const MusicView = React.lazy(() => import('./components/views/MusicView').then(m => ({ default: m.MusicView })));
+const VisitorDashboard = React.lazy(() => import('./components/views/VisitorDashboard').then(m => ({ default: m.VisitorDashboard })));
+const AdminView = React.lazy(() => import('./components/views/AdminView').then(m => ({ default: m.AdminView })));
+const SettingsView = React.lazy(() => import('./components/views/SettingsView').then(m => ({ default: m.SettingsView })));
+const ComingSoonView = React.lazy(() => import('./components/ui/ComingSoonView').then(m => ({ default: m.ComingSoonView })));
 
 // Route ↔ Tab mapping
 const ROUTE_TO_TAB: Record<string, { id: string; name: string }> = {
@@ -400,10 +400,13 @@ export default function App() {
                       <div className="text-[10px] opacity-60">Connecting...</div>
                     </div>
                   </div>
-                  <div className="mt-8 flex flex-col items-center justify-center gap-2 opacity-30 text-center">
-                    <Blocks size={32} />
-                    <span className="text-[10px]">Extension Marketplace: Coming Soon</span>
-                  </div>
+                  <button 
+                    onClick={() => handleFileClick({ id: 'coming-soon', name: 'marketplace.extensions' })}
+                    className="mt-8 flex flex-col items-center justify-center gap-2 opacity-30 text-center hover:opacity-100 transition-opacity w-full group"
+                  >
+                    <Blocks size={32} className="group-hover:scale-110 transition-transform" />
+                    <span className="text-[10px]">Click to explore Marketplace</span>
+                  </button>
                 </div>
               </div>
             )}
@@ -666,6 +669,22 @@ export default function App() {
                                 togglePlay={togglePlay}
                                 currentTrack={playlist[currentTrackIndex]}
                                 nextTrack={nextTrack}
+                              />
+                            </React.Suspense>
+                          </motion.div>
+                        )}
+                        {activeTabId === 'coming-soon' && (
+                          <motion.div
+                            key="coming-soon"
+                            className="h-full"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                          >
+                            <React.Suspense fallback={<div className="h-full flex items-center justify-center opacity-20 text-[10px]">Loading...</div>}>
+                              <ComingSoonView 
+                                title="Extension Marketplace" 
+                                description="We are building a curated gallery of VS Code extensions to enhance your portfolio experience. Stay tuned for the release!" 
                               />
                             </React.Suspense>
                           </motion.div>

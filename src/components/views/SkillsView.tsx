@@ -5,7 +5,7 @@ import {
   Cpu, Globe, Cloud, Shield, 
   Settings, Zap, Sparkles, Binary
 } from 'lucide-react';
-import { cn } from '../lib/utils';
+import { cn } from '../../lib/utils';
 
 const SKILL_CATEGORIES = [
   {

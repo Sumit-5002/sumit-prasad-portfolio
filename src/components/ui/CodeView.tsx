@@ -7,7 +7,7 @@ import {
   Settings, ChevronRight, Maximize2, MoreVertical
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { cn } from '../lib/utils';
+import { cn } from '../../lib/utils';
 
 interface CodeViewProps {
   code: string;

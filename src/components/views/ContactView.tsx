@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { motion } from 'motion/react';
 import { Mail, Github, Linkedin, Send, AlertCircle, CheckCircle2 } from 'lucide-react';
-import { cn } from '../lib/utils';
+import { cn } from '../../lib/utils';
 
 export function ContactView() {
   const [status, setStatus] = React.useState<'idle' | 'loading' | 'success' | 'error'>('idle');
