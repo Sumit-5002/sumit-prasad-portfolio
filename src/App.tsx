@@ -19,6 +19,7 @@ import { FILE_CONTENT } from './constants';
 import { motion, AnimatePresence } from 'motion/react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { AboutView } from './components/AboutView';
+import { ClickEffect } from './components/ClickEffect';
 
 // --- LAZY VIEWS ---
 const ProjectsView = React.lazy(() => import('./components/ProjectsView').then(m => ({ default: m.ProjectsView })));
@@ -296,6 +297,7 @@ export default function App() {
 
   return (
     <ThemeProvider attribute="class" defaultTheme="dark">
+      <ClickEffect />
       <div className="flex flex-col h-[100dvh] w-screen overflow-hidden selection:bg-[var(--color-vscode-selection)] bg-[var(--vscode-bg)] pb-[env(safe-area-inset-bottom)]">
         <TitleBar
           onMenuClick={() => setMobileMenuOpen(!mobileMenuOpen)}
